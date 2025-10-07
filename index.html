@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GENESIS — Agencia Creativa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fallbacks en caso de no tener Cascadia Code instalada -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .loading-screen{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:linear-gradient(135deg, #000 0%, #111 50%, #000 100%);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+      font-family:'Cascadia Code', monospace;
+      overflow:hidden;
+    }
+    .loading-screen::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+      animation:pulse 3s ease-in-out infinite;
+    }
+        .loading-title{
+          font-size:4.5rem;
+          color:#fff;
+          margin:0;
+          font-weight:300;
+          letter-spacing:.15em;
+          text-shadow:0 0 20px rgba(255,255,255,0.3);
+          opacity:0;
+          animation:slideInUp 0.8s ease-out 0.2s forwards, glow 1.5s ease-in-out 0.8s infinite alternate;
+        }
+        .loading-subtitle{
+          font-size:1.2rem;
+          color:rgba(255,255,255,0.8);
+          margin:30px 0 0;
+          font-weight:300;
+          letter-spacing:.1em;
+          opacity:0;
+          animation:slideInUp 0.8s ease-out 0.6s forwards, fadeIn 0.8s ease-out 1.2s forwards;
+        }
+        .loading-dots{
+          display:flex;
+          gap:8px;
+          margin-top:40px;
+          opacity:0;
+          animation:fadeIn 0.5s ease-out 1.4s forwards;
+        }
+    .dot{
+      width:8px;
+      height:8px;
+      background:#fff;
+      border-radius:50%;
+      animation:bounce 1.4s ease-in-out infinite both;
+    }
+    .dot:nth-child(1){ animation-delay:-0.32s; }
+    .dot:nth-child(2){ animation-delay:-0.16s; }
+    .dot:nth-child(3){ animation-delay:0s; }
+    
+    @keyframes slideInUp{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+    @keyframes glow{
+      from{ text-shadow:0 0 20px rgba(255,255,255,0.3); }
+      to{ text-shadow:0 0 30px rgba(255,255,255,0.6), 0 0 40px rgba(255,255,255,0.3); }
+    }
+    @keyframes fadeIn{
+      from{ opacity:0; }
+      to{ opacity:1; }
+    }
+    @keyframes bounce{
+      0%, 80%, 100%{
+        transform:scale(0);
+        opacity:0.5;
+      }
+      40%{
+        transform:scale(1);
+        opacity:1;
+      }
+    }
+    @keyframes pulse{
+      0%, 100%{ opacity:0.3; }
+      50%{ opacity:0.6; }
+    }
+    .fade-out{
+      animation:fadeOut 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    @keyframes fadeOut{
+      0%{ 
+        opacity:1; 
+        transform:scale(1);
+      }
+      100%{ 
+        opacity:0; 
+        transform:scale(1.1);
+        visibility:hidden;
+      }
+    }
+    
+    @media (max-width: 768px){
+      .loading-title{ font-size:3rem; }
+      .loading-subtitle{ font-size:1rem; }
+    }
+    
+    @media (max-width: 480px){
+      .loading-title{ font-size:2.5rem; }
+      .loading-subtitle{ font-size:0.9rem; }
+      .loading-dots{ margin-top:30px; }
+      .dot{ width:6px; height:6px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-screen" id="loadingScreen">
+    <h1 class="loading-title">GENESIS</h1>
+    <p class="loading-subtitle">Agencia Creativa</p>
+    <div class="loading-dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+  
+  <div class="page">
+    <header class="site-header">
+      <nav class="nav">
+        <div class="nav__left">
+          <!-- Coloca aquí tu logo -->
+          <a href="#" class="brand" aria-label="GENESIS">
+            <img src="img/genesislogoHDsinfondo.png" alt="GENESIS" class="brand__img">
+          </a>
+        </div>
+        <button class="nav__toggle" id="navToggle" aria-label="Menú">
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+        </button>
+        <ul class="nav__links" id="navLinks">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="nav__social">
+          <a href="#" aria-label="Facebook" class="social"><img src="img/facebook.png" alt="Facebook" class="social__img"></a>
+          <a href="#" aria-label="Instagram" class="social"><img src="img/instagram.png" alt="Instagram" class="social__img"></a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="inicio" class="hero">
+      <div class="hero__content">
+        <p class="eyebrow">Bienvenido!</p>
+        <h1 class="title">
+          Agencia Creativa
+          <span class="break">en <span class="accent">Puebla</span></span>
+        </h1>
+        <p class="subtitle">Páginas Web | Diseño Digital | Manejo de Redes Sociales</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="#contacto">Cotizar Proyecto</a>
+          <a class="btn btn--ghost" href="#portafolio">Portafolio</a>
+        </div>
+      </div>
+
+      <!-- Círculos animados de fondo -->
+      <div class="bubbles" aria-hidden="true"></div>
+    </main>
+
+    <section id="nosotros" class="about">
+      <div class="about__inner">
+        <header class="about__header reveal" data-delay="100">
+          <h2 class="about__title">Nosotros</h2>
+          <p class="about__tagline">Creamos experiencias digitales que impulsan tu negocio.</p>
+        </header>
+
+        <div class="about__grid">
+          <div class="about__intro reveal" data-delay="200">
+            <p><span class="accent">Somos una agencia creativa joven</span>, con muchas ganas de crecer y dejar huella. Aunque estamos comenzando, ya hemos trabajado con negocios que confiaron en nosotros para construir su presencia digital.</p>
+
+            <div class="about__image">
+              <video autoplay muted loop playsinline class="about__video">
+                <source src="video/1-nosotros1.mp4" type="video/mp4">
+                <source src="video/1-nosotros1.webm" type="video/webm">
+                Tu navegador no soporta video.
+              </video>
+            </div>
+          </div>
+
+          <div class="about__values reveal" data-delay="300">
+            <p class="about__valuesLabel">Nuestros valores son:</p>
+            <ol class="values">
+              <li>
+                <h3>Honestidad</h3>
+                <p>Creemos en la transparencia y la confianza. Hablamos claro, cumplimos lo que prometemos y construimos relaciones duraderas basadas en la verdad.</p>
+              </li>
+              <li>
+                <h3>Compromiso</h3>
+                <p>Nos involucramos en cada proyecto como si fuera propio. Damos nuestro máximo esfuerzo para cumplir con calidad y responsabilidad.</p>
+              </li>
+              <li>
+                <h3>Creatividad</h3>
+                <p>Buscamos siempre ideas nuevas y soluciones originales que ayuden a las marcas a destacar y conectar con su público.</p>
+              </li>
+              <li>
+                <h3>Innovación</h3>
+                <p>Nos mantenemos actualizados y abiertos al cambio. La tecnología y las tendencias son nuestras aliadas para ofrecer siempre lo mejor.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="clients reveal" id="clientes">
+      <div class="clients__inner">
+        <p class="clients__title">Clientes que eligieron crecer con nosotros.</p>
+        <div class="clients__strip" data-delay="200">
+          <!-- Reemplaza las rutas por los logos reales y los href por sus enlaces -->
+          <a href="https://www.instagram.com/hofu.vq/" target="_blank" rel="noopener noreferrer" class="clients__link" aria-label="HOFU">
+            <img src="img/hofulogo.png" alt="HOFU" class="clients__logo clients__logo--blackbg">
+          </a>
+          <a href="https://www.instagram.com/triana.vq/" target="_blank" rel="noopener noreferrer" class="clients__link" aria-label="TEIANA">
+            <img src="img/triana.png" alt="TEIANA" class="clients__logo clients__logo--lg">
+          </a>
+          <a href="https://www.instagram.com/aquiahuac.vq/" target="_blank" rel="noopener noreferrer" class="clients__link" aria-label="AQUIAHUIAC">
+            <img src="img/aquiahuac.jpg" alt="AQUIAHUIAC" class="clients__logo clients__logo--lg">
+          </a>
+        </div>
+      </div>
+    </section>
+
+   
+    
+
+    <section id="servicios" class="services">
+      <div class="services__inner">
+        <h2 class="services__title reveal">Servicios</h2>
+        <p class="services__subtitle reveal" data-delay="100">Ofrecemos soluciones digitales diseñadas para impulsar tu presencia, atraer clientes y hacer crecer tu negocio.</p>
+
+        <div class="services__grid">
+          <article class="serviceCard reveal" data-delay="150">
+            <div class="serviceCard__icon" aria-hidden="true">🌐</div>
+            <h3 class="serviceCard__title">Desarrollo de Páginas Web</h3>
+            <p class="serviceCard__tag">Tu negocio, visible y profesional en internet.</p>
+            <p class="serviceCard__text">Diseñamos y desarrollamos sitios web modernos, funcionales y optimizados. Creamos experiencias digitales que transmiten la esencia de tu marca y convierten visitantes en clientes.</p>
+            <a href="#contacto" class="btn btn--primary serviceCard__cta">Cotizar</a>
+          </article>
+
+          <article class="serviceCard reveal" data-delay="250">
+            <div class="serviceCard__icon serviceCard__icon--social" aria-hidden="true">
+              <img src="img/facebook.png" alt=""/>
+              <img src="img/instagram.png" alt=""/>
+              <img src="img/tik-tok.png" alt=""/>
+              <img src="img/whatsapp.png" alt=""/>
+            </div>
+            <h3 class="serviceCard__title">Manejo de Redes Sociales y Creación de Contenido</h3>
+            <p class="serviceCard__tag">Tú enfócate en tu negocio, nosotros en tu comunidad.</p>
+            <p class="serviceCard__text">Construimos y gestionamos tu presencia en redes para conectar con tu público y posicionar tu marca. Estrategias personalizadas que aumentan el alcance y mejoran la comunicación.</p>
+            <a href="#contacto" class="btn btn--ghost serviceCard__cta">Cotizar</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="paquetes" class="packages reveal">
+        <div class="packages__inner">
+          <h2 class="packages__title">Paquetes que te recomendamos</h2>
+          <p class="packages__subtitle accent">Elije el ideal para ti</p>
+  
+          <div class="packages__tabs" role="tablist" aria-label="Tipo de paquete">
+            <button class="tab is-active" role="tab" aria-selected="true" aria-controls="tab-combinado" id="btn-combinado" data-tab="combinado">Combinado</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="tab-web" id="btn-web" data-tab="web">Pagina Web</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="tab-social" id="btn-social" data-tab="social">Redes Sociales</button>
+          </div>
+  
+          <div class="packages__panels">
+            <div class="panel is-active" id="tab-combinado" role="tabpanel" aria-labelledby="btn-combinado" data-panel="combinado">
+              <div class="plans">
+                <article class="planCard">
+                  <h3 class="planCard__name">Genesis <span class="muted">Basico</span></h3>
+                  <p class="planCard__hint">(El inicio de tu presencia digital)</p>
+                  <div class="planCard__box"></div>
+                </article>
+                <article class="planCard">
+                  <h3 class="planCard__name">Ascenso <span class="muted">Intermedio</span></h3>
+                  <p class="planCard__hint">(Haz crecer tu marca con más herramientas y diseño)</p>
+                  <div class="planCard__box"></div>
+                </article>
+                <article class="planCard">
+                  <h3 class="planCard__name">Infinity <span class="muted">Deluxe</span></h3>
+                  <p class="planCard__hint">(Lleva tu negocio a su máximo nivel digital)</p>
+                  <div class="planCard__box"></div>
+                </article>
+              </div>
+            </div>
+  
+            <div class="panel" id="tab-web" role="tabpanel" aria-labelledby="btn-web" hidden data-panel="web">
+              <div class="plans">
+                <article class="planCard">
+                  <h3 class="planCard__name">Genesis <span class="muted">Basico</span></h3>
+                  <p class="planCard__hint">(El inicio de tu presencia digital)</p>
+                  <div class="planCard__box"></div>
+                </article>
+                <article class="planCard">
+                  <h3 class="planCard__name">Ascenso <span class="muted">Intermedio</span></h3>
+                  <p class="planCard__hint">(Haz crecer tu marca con más herramientas y diseño)</p>
+                  <div class="planCard__box"></div>
+                </article>
+                <article class="planCard">
+                  <h3 class="planCard__name">Infinity <span class="muted">Deluxe</span></h3>
+                  <p class="planCard__hint">(Lleva tu negocio a su máximo nivel digital)</p>
+                  <div class="planCard__box"></div>
+                </article>
+              </div>
+            </div>
+  
+            <div class="panel" id="tab-social" role="tabpanel" aria-labelledby="btn-social" hidden data-panel="social">
+              <div class="plans">
+                <article class="planCard">
+                  <h3 class="planCard__name">Genesis <span class="muted">Basico</span></h3>
+                  <p class="planCard__hint">(El inicio de tu presencia digital)</p>
+                  <div class="planCard__box"></div>
+                </article>
+                <article class="planCard">
+                  <h3 class="planCard__name">Ascenso <span class="muted">Intermedio</span></h3>
+                  <p class="planCard__hint">(Haz crecer tu marca con más herramientas y diseño)</p>
+                  <div class="planCard__box"></div>
+                </article>
+                <article class="planCard">
+                  <h3 class="planCard__name">Infinity <span class="muted">Deluxe</span></h3>
+                  <p class="planCard__hint">(Lleva tu negocio a su máximo nivel digital)</p>
+                  <div class="planCard__box"></div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      <section id="portafolio" class="portfolio reveal">
+        <div class="portfolio__inner">
+          <h2 class="portfolio__title">Portafolio</h2>
+          <p class="portfolio__subtitle">Ellos ya confiaron en <span class="accent">Génesis</span></p>
+          
+          <div class="portfolio__grid">
+             <a href="aquiahuac.html" class="portfolioCard reveal" data-delay="100">
+               <div class="portfolioCard__logo">
+                 <img src="img/aquiahuac.jpg" alt="Osteria Aquiahuac" class="portfolioCard__img">
+               </div>
+               <h3 class="portfolioCard__name">Osteria Aquiahuac - Val'Quirico</h3>
+               
+             </a>
+  
+            <article class="portfolioCard reveal" data-delay="200">
+              <div class="portfolioCard__logo">
+                <img src="img/triana.png" alt="Taberna de Triana" class="portfolioCard__img">
+              </div>
+              <h3 class="portfolioCard__name">Taberna de Triana - Val'Quirico</h3>
+             
+            </article>
+  
+            <article class="portfolioCard reveal" data-delay="300">
+              <div class="portfolioCard__logo">
+                <img src="img/hofulogo.png" alt="Hofu" class="portfolioCard__img">
+              </div>
+              <h3 class="portfolioCard__name">Hofu - Val'Quirico</h3>
+             
+            </article>
+  
+            <article class="portfolioCard reveal" data-delay="400">
+              <div class="portfolioCard__logo">
+                <img src="img/victoria.png" alt="Producciones Victoria" class="portfolioCard__img">
+              </div>
+              <h3 class="portfolioCard__name">Producciones Victoria San Martin Texmelucan</h3>
+             
+            </article>
+          </div>
+        </div>
+      </section>
+  
+    <section id="contacto" class="contact reveal">
+      <div class="contact__inner">
+        <header class="contact__header">
+          <h2 class="contact__title">Contacto</h2>
+          <p class="contact__subtitle">Cuéntanos sobre tu proyecto y déjanos ayudarte a hacerlo realidad.</p>
+        </header>
+
+        <div class="contact__content">
+          <div class="contact__info">
+            <div class="contact__section">
+              <h3 class="contact__sectionTitle">Teléfonos:</h3>
+              <div class="contact__phones">
+                <a href="https://wa.me/522481688043" target="_blank" rel="noopener noreferrer" class="contact__phone">
+                  <img src="img/whatsapp.png" alt="WhatsApp" class="contact__phoneIcon">
+                  <span>248 168 8043</span>
+                </a>
+                <a href="tel:2482413714" class="contact__phone">
+                  <span>248 241 3714</span>
+                </a>
+                <a href="tel:2211482287" class="contact__phone">
+                  <span>221 148 2287</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="contact__section">
+              <h3 class="contact__sectionTitle">Redes Sociales:</h3>
+              <div class="contact__social">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="contact__socialLink" aria-label="Instagram">
+                  <img src="img/instagram.png" alt="Instagram" class="contact__socialIcon">
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="contact__socialLink" aria-label="Facebook">
+                  <img src="img/facebook.png" alt="Facebook" class="contact__socialIcon">
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact__form" id="contactForm" action="https://formspree.io/f/mzzjvnpk" method="POST">
+            <!-- Campo oculto para el asunto del email -->
+            <input type="hidden" name="_subject" value="Nueva consulta desde GENESIS - Agencia Creativa">
+            <input type="hidden" name="_replyto" value="">
+            <input type="hidden" name="_next" value="http://localhost/genesiságina/success.html">
+            
+            <div class="form__group">
+              <label for="nombre" class="form__label">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" class="form__input" required>
+            </div>
+
+            <div class="form__group">
+              <label for="email" class="form__label">Correo electrónico *</label>
+              <input type="email" id="email" name="email" class="form__input" required>
+            </div>
+
+            <div class="form__group">
+              <label for="telefono" class="form__label">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" class="form__input">
+            </div>
+
+            <div class="form__group">
+              <label for="empresa" class="form__label">Empresa/Negocio</label>
+              <input type="text" id="empresa" name="empresa" class="form__input">
+            </div>
+
+            <div class="form__group">
+              <label for="servicio" class="form__label">Servicio de interés *</label>
+              <select id="servicio" name="servicio" class="form__select" required>
+                <option value="">Selecciona un servicio</option>
+                <option value="pagina-web">Página Web</option>
+                <option value="redes-sociales">Manejo de Redes Sociales</option>
+                <option value="combinado">Paquete Combinado</option>
+                <option value="consultoria">Consultoría</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="form__group">
+              <label for="presupuesto" class="form__label">Presupuesto aproximado</label>
+              <select id="presupuesto" name="presupuesto" class="form__select">
+                <option value="">Selecciona un rango</option>
+                <option value="5000-10000">$5,000 - $10,000</option>
+                <option value="10000-20000">$10,000 - $20,000</option>
+                <option value="20000-50000">$20,000 - $50,000</option>
+                <option value="50000+">$50,000+</option>
+                <option value="consultar">Prefiero consultar</option>
+              </select>
+            </div>
+
+            <div class="form__group">
+              <label for="proyecto" class="form__label">Cuéntanos sobre tu proyecto *</label>
+              <textarea id="proyecto" name="proyecto" class="form__textarea" rows="5" placeholder="Describe tu proyecto, objetivos, ideas o cualquier detalle que consideres importante..." required></textarea>
+            </div>
+
+            <div class="form__group">
+              <label for="tiempo" class="form__label">¿Cuándo necesitas el proyecto?</label>
+              <select id="tiempo" name="tiempo" class="form__select">
+                <option value="">Selecciona un tiempo</option>
+                <option value="urgente">Urgente (1-2 semanas)</option>
+                <option value="corto">Corto plazo (1 mes)</option>
+                <option value="medio">Mediano plazo (2-3 meses)</option>
+                <option value="largo">Largo plazo (3+ meses)</option>
+                <option value="flexible">Soy flexible</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn--primary form__submit">
+              Enviar Consulta
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> GENESIS — Agencia Creativa</p>
+    </footer>
+
+    <!-- WhatsApp flotante -->
+    <a href="https://wa.me/5212221234567" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chatear por WhatsApp">
+      <img src="img/whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+
+    <!-- Toggle para animación de círculos -->
+    <button class="bubbles-toggle" id="bubblesToggle" aria-label="Activar/desactivar animación de círculos">
+      <img src="img/on.png" alt="Animación activada" class="bubbles-icon bubbles-icon--on">
+      <img src="img/of.png" alt="Animación desactivada" class="bubbles-icon bubbles-icon--off" style="display: none;">
+    </button>
+  </div>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Círculos rebotantes simples
+    (function(){
+      const NUM = 5;
+      const container = document.querySelector('.bubbles');
+      const bubbles = [];
+      const minSize = 30;
+      const maxSize = 60;
+
+      function rand(min, max){ return Math.random()*(max-min)+min; }
+
+      function createBubble(){
+        const el = document.createElement('span');
+        el.className = 'bubble';
+        const size = rand(minSize, maxSize);
+        el.style.setProperty('--size', size + 'px');
+        container.appendChild(el);
+
+        return {
+          el,
+          x: rand(0, window.innerWidth - size),
+          y: rand(0, window.innerHeight - size),
+          vx: rand(-80, 80),
+          vy: rand(-80, 80),
+          size
+        };
+      }
+
+      // Crear círculos iniciales
+      for(let i=0; i<NUM; i++){
+        bubbles.push(createBubble());
+      }
+
+      let last = performance.now();
+      function tick(now){
+        const dt = Math.min(0.016, (now - last) / 1000);
+        last = now;
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+
+        for(const b of bubbles){
+          b.x += b.vx * dt;
+          b.y += b.vy * dt;
+
+          // Rebote en paredes
+          if(b.x <= 0){ b.x = 0; b.vx *= -1; }
+          if(b.x + b.size >= w){ b.x = w - b.size; b.vx *= -1; }
+          if(b.y <= 0){ b.y = 0; b.vy *= -1; }
+          if(b.y + b.size >= h){ b.y = h - b.size; b.vy *= -1; }
+
+          b.el.style.transform = `translate(${b.x}px, ${b.y}px)`;
+        }
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+
+      // Ajustar en resize
+      window.addEventListener('resize', () => {
+        for(const b of bubbles){
+          b.x = Math.min(b.x, window.innerWidth - b.size);
+          b.y = Math.min(b.y, window.innerHeight - b.size);
+        }
+      });
+    })();
+
+    // Reveal on scroll (IntersectionObserver)
+    (function(){
+      const items = document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window) || items.length === 0){
+        items.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            if(entry.target.id === 'clientes'){
+              entry.target.classList.add('is-active');
+            }
+          } else {
+            if(entry.target.id === 'clientes'){
+              entry.target.classList.remove('is-active');
+            }
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+      items.forEach(el => io.observe(el));
+    })();
+
+    // Tabs de paquetes
+    (function(){
+      const tabButtons = document.querySelectorAll('.packages .tab');
+      const panels = document.querySelectorAll('.packages .panel');
+      if(tabButtons.length === 0) return;
+
+      function setActive(key){
+        tabButtons.forEach(btn => {
+          const active = btn.dataset.tab === key;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        panels.forEach(p => {
+          const isActive = p.dataset.panel === key;
+          p.classList.toggle('is-active', isActive);
+          p.hidden = !isActive;
+        });
+      }
+
+      tabButtons.forEach(btn => btn.addEventListener('click', () => setActive(btn.dataset.tab)));
+      // Estado inicial
+      setActive('combinado');
+    })();
+
+
+    // Toggle de círculos
+    (function(){
+      const bubblesToggle = document.getElementById('bubblesToggle');
+      const bubblesContainer = document.querySelector('.bubbles');
+      const iconOn = bubblesToggle?.querySelector('.bubbles-icon--on');
+      const iconOff = bubblesToggle?.querySelector('.bubbles-icon--off');
+      let bubblesActive = true;
+      
+      if(bubblesToggle && bubblesContainer && iconOn && iconOff){
+        bubblesToggle.addEventListener('click', () => {
+          bubblesActive = !bubblesActive;
+          bubblesToggle.classList.toggle('is-active', bubblesActive);
+          
+          if(bubblesActive){
+            bubblesContainer.style.display = 'block';
+            iconOn.style.display = 'block';
+            iconOff.style.display = 'none';
+          } else {
+            bubblesContainer.style.display = 'none';
+            iconOn.style.display = 'none';
+            iconOff.style.display = 'block';
+          }
+        });
+        
+        // Estado inicial
+        bubblesToggle.classList.add('is-active');
+      }
+    })();
+    
+      // Animación de carga elegante
+      window.addEventListener('load', function() {
+        const loadingScreen = document.getElementById('loadingScreen');
+        
+        // Esperar a que termine la secuencia de animaciones (2 segundos total)
+        setTimeout(() => {
+          loadingScreen.classList.add('fade-out');
+          
+          // Remover completamente después de la animación de fade
+          setTimeout(() => {
+            loadingScreen.remove();
+          }, 1200);
+        }, 2000);
+      });
+
+    // Menú hamburguesa móvil
+    (function(){
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      
+      if(navToggle && navLinks){
+        navToggle.addEventListener('click', () => {
+          navToggle.classList.toggle('active');
+          navLinks.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer click en un enlace
+        navLinks.addEventListener('click', (e) => {
+          if(e.target.tagName === 'A'){
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+          }
+        });
+        
+        // Cerrar menú al hacer scroll
+        window.addEventListener('scroll', () => {
+          navToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      }
+    })();
+
+    // Formulario de contacto con Formspree
+    (function(){
+      const contactForm = document.getElementById('contactForm');
+      
+      if(contactForm){
+        contactForm.addEventListener('submit', function(e){
+          // Obtener datos del formulario
+          const formData = new FormData(contactForm);
+          const data = Object.fromEntries(formData);
+          
+          // Validar campos requeridos
+          const requiredFields = ['nombre', 'email', 'servicio', 'proyecto'];
+          let isValid = true;
+          
+          requiredFields.forEach(field => {
+            const input = contactForm.querySelector(`[name="${field}"]`);
+            if(!data[field] || data[field].trim() === ''){
+              input.style.borderColor = '#ff4444';
+              isValid = false;
+            } else {
+              input.style.borderColor = '#44ff44';
+            }
+          });
+          
+          if(!isValid){
+            e.preventDefault();
+            alert('Por favor completa todos los campos requeridos.');
+            return;
+          }
+          
+          // Configurar el campo _replyto con el email del usuario
+          const replyToField = contactForm.querySelector('input[name="_replyto"]');
+          if(replyToField){
+            replyToField.value = data.email;
+          }
+          
+          // Mostrar mensaje de envío
+          const submitBtn = contactForm.querySelector('.form__submit');
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = 'Enviando...';
+          submitBtn.disabled = true;
+          
+          // Solución: Enviar con fetch y manejar la respuesta
+          e.preventDefault();
+          
+          // Intentar envío con fetch primero
+          fetch(contactForm.action, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors' // Evitar problemas de CORS
+          })
+          .then(() => {
+            // Si fetch funciona, redirigir inmediatamente
+            window.location.href = 'success.html';
+          })
+          .catch(() => {
+            // Si fetch falla, usar iframe como fallback
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'formspree-iframe';
+            document.body.appendChild(iframe);
+            
+            // Configurar el iframe para detectar cuando se carga
+            iframe.onload = function() {
+              setTimeout(() => {
+                window.location.href = 'success.html';
+              }, 1000);
+            };
+            
+            // Cambiar el target del formulario al iframe
+            contactForm.target = 'formspree-iframe';
+            
+            // Enviar el formulario
+            contactForm.submit();
+            
+            // Fallback: Redirigir después de 3 segundos
+            setTimeout(() => {
+              window.location.href = 'success.html';
+            }, 3000);
+          });
+        });
+        
+        // Función alternativa para WhatsApp (botón opcional)
+        function sendToWhatsApp(){
+          const formData = new FormData(contactForm);
+          const data = Object.fromEntries(formData);
+          
+          const message = `¡Hola! Me interesa conocer más sobre sus servicios.
+
+*Información del cliente:*
+• Nombre: ${data.nombre || 'No proporcionado'}
+• Email: ${data.email || 'No proporcionado'}
+• Teléfono: ${data.telefono || 'No proporcionado'}
+• Empresa: ${data.empresa || 'No proporcionada'}
+
+*Detalles del proyecto:*
+• Servicio de interés: ${data.servicio || 'No especificado'}
+• Presupuesto: ${data.presupuesto || 'No especificado'}
+• Tiempo de entrega: ${data.tiempo || 'No especificado'}
+
+*Descripción del proyecto:*
+${data.proyecto || 'No proporcionada'}
+
+¡Espero su respuesta!`;
+
+          const whatsappUrl = `https://wa.me/522481688043?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, '_blank');
+        }
+        
+        // Hacer la función disponible globalmente si quieres agregar un botón de WhatsApp
+        window.sendToWhatsApp = sendToWhatsApp;
+      }
+    })();
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AQUIAHUAC — Portafolio | GENESIS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .portfolio-detail{ padding:90px 24px; background: var(--surface); }
+    .portfolio-detail__inner{ max-width:1200px; margin:0 auto; }
+    .portfolio-detail__header{ text-align:center; margin-bottom:60px; }
+    .portfolio-detail__title{ font-size:48px; margin:0; letter-spacing:.1em; }
+    .portfolio-detail__content{ display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:start; }
+    .portfolio-logo{ background:#f5f5dc; border:3px solid #8b4513; border-radius:12px; padding:30px; text-align:center; }
+    .portfolio-logo__img{ max-width:100%; height:auto; border-radius:8px; }
+    .portfolio-description{ font-family:var(--font-mono); line-height:1.6; }
+    .portfolio-detail__footer{ background:#111; padding:40px 24px; border-top:1px solid rgba(255,255,255,.1); }
+    .portfolio-detail__footer__content{ max-width:1200px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr; gap:40px; }
+    .portfolio-details h4{ color:var(--accent); margin:0 0 12px; }
+    .portfolio-details p{ margin:0 0 8px; color:var(--muted); }
+    .portfolio-social h4{ color:var(--accent); margin:0 0 12px; }
+    .portfolio-social__links{ display:flex; gap:16px; }
+    .portfolio-social__link{ width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; }
+    .portfolio-social__icon{ width:32px; height:32px; }
+    .back-link{ display:inline-flex; align-items:center; gap:8px; color:var(--accent); text-decoration:none; margin-bottom:20px; }
+    .back-link:hover{ color:#fff; }
+    
+    /* Capturas Section */
+    .captures-section{ padding:80px 24px; background:#000; }
+    .captures-header{ text-align:center; margin-bottom:80px; }
+    .captures-title{ font-size:48px; margin:0 0 12px; letter-spacing:.1em; }
+    .captures-subtitle{ font-size:18px; color:var(--muted); margin:0; }
+    .captures-content{ display:grid; grid-template-columns: 1fr 1fr; gap:80px; max-width:1200px; margin:0 auto; }
+    
+    /* Instagram Preview */
+    .instagram-preview{ }
+    .instagram-title{ font-size:24px; margin:0 0 20px; font-weight:600; }
+    .instagram-frame{ border:2px solid #fff; border-radius:12px; padding:20px; background:#111; }
+    .instagram-screenshot{ width:100%; height:auto; border-radius:8px; }
+    
+    /* Gallery Section */
+    .gallery-section{ }
+    .gallery-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:20px; }
+    .gallery-item{ position:relative; aspect-ratio:1; overflow:hidden; border-radius:12px; border:2px solid #fff; text-decoration:none; display:block; transition:transform .2s ease; }
+    .gallery-item:nth-child(3){ grid-column:1/-1; }
+    .gallery-item:hover{ transform:scale(1.02); }
+    .gallery-img{ width:100%; height:100%; object-fit:cover; }
+    .gallery-overlay{ display:none; }
+    .gallery-text{ display:none; }
+    
+    /* Client Review Section */
+    .client-review{ margin:80px 0; padding:40px 0; border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1); }
+    .review-content{ max-width:800px; margin:0 auto; text-align:center; }
+    .review-quote{ margin-bottom:30px; }
+    .review-text{ font-size:20px; line-height:1.6; font-style:italic; color:#fff; margin:0; position:relative; }
+    .review-text::before{ content:'"'; font-size:60px; color:var(--accent); position:absolute; top:-20px; left:-20px; }
+    .review-text::after{ content:'"'; font-size:60px; color:var(--accent); position:absolute; bottom:-40px; right:-20px; }
+    .review-author{ display:flex; justify-content:space-between; align-items:center; }
+    .author-info{ display:flex; align-items:center; gap:16px; }
+    .author-photo{ width:60px; height:60px; border-radius:50%; overflow:hidden; border:2px solid var(--accent); }
+    .author-img{ width:100%; height:100%; object-fit:cover; }
+    .author-details{ text-align:left; }
+    .author-name{ font-size:18px; margin:0 0 4px; color:var(--accent); }
+    .author-title{ font-size:14px; margin:0 0 2px; color:var(--muted); }
+    .author-location{ font-size:12px; margin:0; color:var(--muted); }
+    .review-rating{ display:flex; gap:4px; }
+    .star{ color:#ffd700; font-size:20px; }
+    
+    /* CTA Section */
+    .captures-cta{ text-align:center; margin-top:60px; }
+    .cta-text{ font-size:18px; margin:0 0 20px; }
+    .cta-social{ display:flex; justify-content:center; gap:20px; }
+    .cta-social__link{ width:50px; height:50px; display:flex; align-items:center; justify-content:center; }
+    .cta-social__icon{ width:40px; height:40px; }
+    
+    @media (max-width: 960px){
+      .portfolio-detail{ padding:60px 20px; }
+      .portfolio-detail__title{ font-size:36px; }
+      .portfolio-detail__content{ grid-template-columns: 1fr; gap:40px; }
+      .portfolio-detail__footer__content{ grid-template-columns: 1fr; gap:20px; }
+      .captures-section{ padding:60px 20px; }
+      .captures-title{ font-size:36px; }
+      .captures-content{ grid-template-columns: 1fr; gap:40px; }
+      .gallery-grid{ grid-template-columns: 1fr; }
+      .gallery-item:nth-child(3){ grid-column:1; }
+      .review-author{ flex-direction:column; gap:16px; text-align:center; }
+      .author-info{ flex-direction:column; text-align:center; }
+      .review-text{ font-size:18px; }
+      .review-text::before, .review-text::after{ display:none; }
+    }
+    
+    @media (max-width: 768px){
+      .portfolio-detail{ padding:50px 16px; }
+      .portfolio-detail__title{ font-size:32px; }
+      .portfolio-detail__header{ margin-bottom:40px; }
+      .portfolio-logo{ padding:20px; }
+      .portfolio-description{ font-size:14px; }
+      .captures-section{ padding:50px 16px; }
+      .captures-title{ font-size:32px; }
+      .captures-header{ margin-bottom:60px; }
+      .instagram-title{ font-size:20px; }
+      .instagram-frame{ padding:16px; }
+      .gallery-grid{ gap:16px; }
+      .gallery-item{ border-radius:8px; }
+      .client-review{ margin:60px 0; padding:30px 0; }
+      .review-text{ font-size:16px; }
+      .author-photo{ width:50px; height:50px; }
+      .author-name{ font-size:16px; }
+      .author-title{ font-size:13px; }
+      .author-location{ font-size:11px; }
+      .cta-text{ font-size:16px; }
+      .cta-social__link{ width:45px; height:45px; }
+      .cta-social__icon{ width:35px; height:35px; }
+    }
+    
+    @media (max-width: 480px){
+      .portfolio-detail{ padding:40px 12px; }
+      .portfolio-detail__title{ font-size:28px; }
+      .portfolio-detail__header{ margin-bottom:30px; }
+      .portfolio-logo{ padding:16px; }
+      .portfolio-description{ font-size:13px; }
+      .captures-section{ padding:40px 12px; }
+      .captures-title{ font-size:28px; }
+      .captures-header{ margin-bottom:50px; }
+      .captures-subtitle{ font-size:16px; }
+      .instagram-title{ font-size:18px; }
+      .instagram-frame{ padding:12px; }
+      .gallery-grid{ gap:12px; }
+      .gallery-item{ border-radius:6px; }
+      .client-review{ margin:50px 0; padding:25px 0; }
+      .review-text{ font-size:15px; }
+      .author-photo{ width:45px; height:45px; }
+      .author-name{ font-size:15px; }
+      .author-title{ font-size:12px; }
+      .author-location{ font-size:10px; }
+      .cta-text{ font-size:15px; }
+      .cta-social__link{ width:40px; height:40px; }
+      .cta-social__icon{ width:30px; height:30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <nav class="nav">
+        <div class="nav__left">
+          <a href="index.html" class="brand" aria-label="GENESIS">
+            <img src="img/genesislogoHDsinfondo.png" alt="GENESIS" class="brand__img">
+          </a>
+        </div>
+        <button class="nav__toggle" id="navToggle" aria-label="Menú">
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+        </button>
+        <ul class="nav__links" id="navLinks">
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#nosotros">Nosotros</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#portafolio">Portafolio</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+        <div class="nav__social">
+          <a href="#" aria-label="Facebook" class="social"><img src="img/facebook.png" alt="Facebook" class="social__img"></a>
+          <a href="#" aria-label="Instagram" class="social"><img src="img/instagram.png" alt="Instagram" class="social__img"></a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="portfolio-detail">
+      <div class="portfolio-detail__inner">
+        <div class="portfolio-detail__header">
+         
+          <h1 class="portfolio-detail__title">AQUIAHUAC</h1>
+        </div>
+
+        <div class="portfolio-detail__content">
+          <div class="portfolio-logo">
+            <img src="img/aquiahuac.jpg" alt="AQUIAHUAC Logo" class="portfolio-logo__img">
+          </div>
+
+          <div class="portfolio-description">
+            <p>Colaboramos con Osteria Aquiahuac en la construcción de su imagen digital mediante una estrategia de creación de contenido profesional para redes sociales. A través de fotografías, videos y publicaciones diseñadas con intención, fortalecimos su identidad visual y logramos que su marca tuviera una mayor presencia, interacción y posicionamiento dentro de su comunidad local. Este proyecto representa cómo una comunicación creativa puede transformar la forma en que un negocio conecta con sus clientes.</p>
+          </div>
+        </div>
+        </div>
+        
+        <div class="portfolio-detail__footer__content" style="margin-top: 80px;">
+        <div class="portfolio-details">
+          <h4>Detalles del proyecto</h4>
+          <p><strong>Producto:</strong> Manejo de redes sociales</p>
+          <p><strong>Cliente:</strong> Osteria Aquiahuac, ubicada en Val'Quirico</p>
+          <p><strong>Fecha:</strong> Agosto - 2025 / Actualmente</p>
+        </div>
+
+        <div class="portfolio-social">
+          <h4>Link a sus redes sociales</h4>
+          <div class="portfolio-social__links">
+            <a href="https://www.facebook.com/profile.php?id=61551905140963" target="_blank" rel="noopener noreferrer" class="portfolio-social__link portfolio-social__link--facebook">
+              <img src="img/facebook.png" alt="Facebook" class="portfolio-social__icon">
+            </a>
+            <a href="https://www.instagram.com/aquiahuac.vq/" target="_blank" rel="noopener noreferrer" class="portfolio-social__link portfolio-social__link--instagram">
+              <img src="img/instagram.png" alt="Instagram" class="portfolio-social__icon">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de Capturas -->
+      <div class="captures-section" style="margin-top: 100px;">
+        <div class="captures-header">
+          <h2 class="captures-title">Capturas</h2>
+          <p class="captures-subtitle">Actualizado  1 - 10 - 2025</p>
+        </div>
+
+        <div class="captures-content">
+          <div class="instagram-preview">
+            <h3 class="instagram-title">Instagram</h3>
+            <div class="instagram-frame">
+              <img src="img/instagraminicioAquiahuacvq.jpg" alt="Instagram de Aquiahuac" class="instagram-screenshot">
+            </div>
+          </div>
+
+          <div class="gallery-section">
+            <div class="gallery-grid">
+              <a href="https://www.instagram.com/p/DOhqwHXjFM-/" target="_blank" rel="noopener noreferrer" class="gallery-item">
+                <img src="img/pastel1aquiahuac.jpg" alt="Cheesecake" class="gallery-img">
+              </a>
+              <a href="https://www.instagram.com/p/DORsc4jEq5K/" target="_blank" rel="noopener noreferrer" class="gallery-item">
+                <img src="img/brindisconestiloAquiahuacVq.jpg" alt="Cocktail" class="gallery-img">
+              </a>
+              <a href="https://www.instagram.com/p/DOEscSvkkV9/" target="_blank" rel="noopener noreferrer" class="gallery-item">
+                <img src="img/placersimpleAquiahuac.jpg" alt="Plate" class="gallery-img">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección de Reseña del Cliente -->
+        <div class="client-review">
+          <div class="review-content">
+            <div class="review-quote">
+              <p class="review-text">"El trabajo de GENESIS ha sido excepcional. Han logrado capturar perfectamente la esencia de nuestro restaurante y crear contenido que realmente conecta con nuestros clientes. Su creatividad y profesionalismo se reflejan en cada publicación."</p>
+            </div>
+            <div class="review-author">
+              <div class="author-info">
+                <div class="author-photo">
+                  <img src="img/owner-aquiahuac.jpg" alt="Dueño de Osteria Aquiahuac" class="author-img">
+                </div>
+                <div class="author-details">
+                  <h4 class="author-name">------ejemplo------</h4>
+                  <p class="author-title">Dueño - Osteria Aquiahuac</p>
+                  <p class="author-location">Val'Quirico</p>
+                </div>
+              </div>
+              <div class="review-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="captures-cta">
+          <p class="cta-text">Para ver más, visítalos en sus redes sociales te los recomendamos</p>
+          <div class="cta-social">
+            <a href="https://www.facebook.com/aquiahuac" target="_blank" rel="noopener noreferrer" class="cta-social__link">
+              <img src="img/facebook.png" alt="Facebook" class="cta-social__icon">
+            </a>
+            <a href="https://www.instagram.com/aquiahuac.vq/" target="_blank" rel="noopener noreferrer" class="cta-social__link">
+              <img src="img/instagram.png" alt="Instagram" class="cta-social__icon">
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+
+    <footer class="site-footer" id="contacto">
+      <p>© <span id="year"></span> GENESIS — Agencia Creativa</p>
+    </footer>
+  </div>
+
+  <script>
+    // Año dinámico en el footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Menú hamburguesa móvil
+    (function(){
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      
+      if(navToggle && navLinks){
+        navToggle.addEventListener('click', () => {
+          navToggle.classList.toggle('active');
+          navLinks.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer click en un enlace
+        navLinks.addEventListener('click', (e) => {
+          if(e.target.tagName === 'A'){
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+          }
+        });
+        
+        // Cerrar menú al hacer scroll
+        window.addEventListener('scroll', () => {
+          navToggle.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

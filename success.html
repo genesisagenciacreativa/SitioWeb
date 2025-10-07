@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¡Gracias! - GENESIS Agencia Creativa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .success-page{
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #000 0%, #111 50%, #000 100%);
+      padding: 20px;
+    }
+    .success-content{
+      text-align: center;
+      max-width: 600px;
+      background: #0b0b0b;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .success-content::after{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px 120px at -10% -20%, rgba(255,110,163,.15), transparent 60%), radial-gradient(600px 120px at 110% 120%, rgba(255,110,163,.12), transparent 60%);
+      opacity: .6;
+      pointer-events: none;
+    }
+    .success-icon{
+      font-size: 80px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+    .success-title{
+      font-size: 36px;
+      color: var(--accent);
+      margin: 0 0 20px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      position: relative;
+      z-index: 1;
+    }
+    .success-message{
+      font-size: 18px;
+      color: var(--text);
+      margin: 0 0 30px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    .success-details{
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 30px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .success-details h3{
+      color: var(--accent);
+      margin: 0 0 15px;
+      font-size: 20px;
+    }
+    .success-details p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .success-actions{
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      letter-spacing: .04em;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn--primary{ background: var(--accent); color: #0b0b0b; }
+    .btn--primary:hover{ filter: brightness(1.05); }
+    .btn--ghost{ background: transparent; border-color: rgba(255,255,255,.35); }
+    .btn--ghost:hover{ background: rgba(255,255,255,.06); }
+    
+    @media (max-width: 640px){
+      .success-content{ padding: 40px 20px; }
+      .success-title{ font-size: 28px; }
+      .success-message{ font-size: 16px; }
+      .success-actions{ flex-direction: column; }
+      .btn{ width: 100%; max-width: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="success-page">
+    <div class="success-content">
+      <div class="success-icon">✅</div>
+      <h1 class="success-title">¡Gracias por tu mensaje!</h1>
+      <p class="success-message">
+        Hemos recibido tu consulta y estamos emocionados de conocer más sobre tu proyecto. 
+        Nuestro equipo revisará todos los detalles y te contactaremos en breve.
+      </p>
+      
+      <div class="success-details">
+        <h3>¿Qué sigue ahora?</h3>
+        <p>
+          • Revisaremos tu proyecto y necesidades<br>
+          • Te contactaremos en las próximas 24 horas<br>
+          • Programaremos una consulta gratuita<br>
+          • Te enviaremos una propuesta personalizada
+        </p>
+      </div>
+      
+      <div class="success-actions">
+        <a href="index.html" class="btn btn--primary">Volver al Inicio</a>
+        <a href="https://wa.me/522481688043" target="_blank" class="btn btn--ghost">Chatear por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
