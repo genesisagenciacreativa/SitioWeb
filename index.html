@@ -404,12 +404,19 @@
               <label for="presupuesto" class="form__label">Presupuesto aproximado</label>
               <select id="presupuesto" name="presupuesto" class="form__select">
                 <option value="">Selecciona un rango</option>
-                <option value="5000-10000">$5,000 - $10,000</option>
-                <option value="10000-20000">$10,000 - $20,000</option>
-                <option value="20000-50000">$20,000 - $50,000</option>
-                <option value="50000+">$50,000+</option>
+                <option value="1000-3000">$1,000 - $3,000 mxn</option>
+                <option value="5000-10000">$5,000 - $10,000 mxn</option>
+                <option value="10000-20000">$10,000 - $20,000 mxn</option>
+                <option value="20000-50000">$20,000 - $50,000 mxn</option>
+                <option value="50000+">$50,000+ mxn</option>
+                <option value="otro">Otro (especificar abajo)</option>
                 <option value="consultar">Prefiero consultar</option>
               </select>
+            </div>
+
+            <div class="form__group" id="presupuestoOtroGroup" style="display: none;">
+              <label for="presupuestoOtro" class="form__label">Especifica tu presupuesto</label>
+              <input type="text" id="presupuestoOtro" name="presupuestoOtro" class="form__input" placeholder="Ej: $15,000 mxn">
             </div>
 
             <div class="form__group">
@@ -438,7 +445,101 @@
     </section>
 
     <footer class="site-footer">
-      <p>© <span id="year"></span> GENESIS — Agencia Creativa</p>
+      <div class="footer__inner">
+        <div class="footer__content">
+          <!-- Información de la empresa -->
+          <div class="footer__section">
+            <div class="footer__brand">
+              <img src="img/genesislogoHDsinfondo.png" alt="GENESIS" class="footer__logo">
+              <h3 class="footer__brandName">GENESIS</h3>
+              <p class="footer__tagline">Agencia Creativa en Puebla</p>
+            </div>
+            <p class="footer__description">
+              Creamos experiencias digitales que impulsan tu negocio. 
+              Páginas web, diseño digital y manejo de redes sociales.
+            </p>
+          </div>
+
+          <!-- Servicios -->
+          <div class="footer__section">
+            <h4 class="footer__title">Servicios</h4>
+            <ul class="footer__links">
+              <li><a href="#servicios">Desarrollo de Páginas Web</a></li>
+              <li><a href="#servicios">Manejo de Redes Sociales</a></li>
+              <li><a href="#servicios">Creación de Contenido</a></li>
+              <li><a href="#paquetes">Paquetes de Redes Sociales</a></li>
+              <li><a href="#contacto">Consultoría Digital</a></li>
+            </ul>
+          </div>
+
+          <!-- Contacto -->
+          <div class="footer__section">
+            <h4 class="footer__title">Contacto</h4>
+            <div class="footer__contact">
+              <div class="footer__contactItem">
+                <img src="img/whatsapp.png" alt="WhatsApp" class="footer__contactIcon">
+                <a href="https://wa.me/522481688043" target="_blank" rel="noopener noreferrer">
+                  248 168 8043
+                </a>
+              </div>
+              <div class="footer__contactItem">
+                <span class="footer__contactIcon">📞</span>
+                <a href="tel:2482413714">248 241 3714</a>
+              </div>
+              <div class="footer__contactItem">
+                <span class="footer__contactIcon">📞</span>
+                <a href="tel:2211482287">221 148 2287</a>
+              </div>
+
+              
+              <div class="footer__contactItem">
+                <span class="footer__contactIcon">📍</span>
+                <span>Puebla, México</span>
+              </div>
+              <div class="footer__contactItem">
+                <span class="footer__contactIcon">✉️</span>
+                <a href="mailto:genesiszz999@gmail.com">genesiszz999@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Redes Sociales -->
+          <div class="footer__section">
+            <h4 class="footer__title">Síguenos</h4>
+            <div class="footer__social">
+              <a href="https://www.instagram.com/genesis.agencyc/" target="_blank" rel="noopener noreferrer" class="footer__socialLink" aria-label="Instagram">
+                <img src="img/instagram.png" alt="Instagram" class="footer__socialIcon">
+                <span>Instagram</span>
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer" class="footer__socialLink" aria-label="Facebook">
+                <img src="img/facebook.png" alt="Facebook" class="footer__socialIcon">
+                <span>Facebook</span>
+              </a>
+              <a href="https://wa.me/2481688043" target="_blank" rel="noopener noreferrer" class="footer__socialLink" aria-label="WhatsApp">
+                <img src="img/whatsapp.png" alt="WhatsApp" class="footer__socialIcon">
+                <span>WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Línea divisoria -->
+        <div class="footer__divider"></div>
+
+        <!-- Información legal y copyright -->
+        <div class="footer__bottom">
+          <div class="footer__bottomContent">
+            <p class="footer__copyright">
+              © <span id="year"></span> GENESIS — Agencia Creativa. Todos los derechos reservados.
+            </p>
+            <div class="footer__legal">
+              <a href="politica-privacidad.html" class="footer__legalLink">Política de Privacidad</a>
+              <a href="#contacto" class="footer__legalLink">Términos de Servicio</a>
+              <a href="#contacto" class="footer__legalLink">Aviso Legal</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- WhatsApp flotante -->
@@ -472,6 +573,91 @@
         <h3 class="creation-modal__title">En Creación</h3>
         <p class="creation-modal__text">Estamos trabajando en este paquete. ¡Pronto estará disponible!</p>
         <button class="btn btn--primary creation-modal__close" id="closeCreationModal">Entendido</button>
+      </div>
+    </div>
+
+    <!-- Banner de Cookies -->
+    <div class="cookies-banner" id="cookiesBanner">
+      <div class="cookies-banner__content">
+        <div class="cookies-banner__text">
+          <h4 class="cookies-banner__title">🍪 Uso de Cookies</h4>
+          <p class="cookies-banner__description">
+            Utilizamos cookies para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. 
+            Al continuar navegando, aceptas nuestro uso de cookies.
+          </p>
+        </div>
+        <div class="cookies-banner__actions">
+          <button class="cookies-banner__btn cookies-banner__btn--settings" id="cookiesSettings">
+            Configurar
+          </button>
+          <button class="cookies-banner__btn cookies-banner__btn--accept" id="cookiesAccept">
+            Aceptar Todas
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de Configuración de Cookies -->
+    <div class="cookies-modal" id="cookiesModal">
+      <div class="cookies-modal__content">
+        <div class="cookies-modal__header">
+          <h3 class="cookies-modal__title">Configuración de Cookies</h3>
+          <button class="cookies-modal__close" id="cookiesModalClose">×</button>
+        </div>
+        
+        <div class="cookies-modal__body">
+          <p class="cookies-modal__description">
+            Puedes personalizar tus preferencias de cookies. Algunas cookies son necesarias para el funcionamiento del sitio web.
+          </p>
+          
+          <div class="cookies-category">
+            <div class="cookies-category__header">
+              <h4 class="cookies-category__title">Cookies Necesarias</h4>
+              <label class="cookies-toggle">
+                <input type="checkbox" id="cookiesNecessary" checked disabled>
+                <span class="cookies-toggle__slider"></span>
+              </label>
+            </div>
+            <p class="cookies-category__description">
+              Estas cookies son esenciales para el funcionamiento del sitio web y no se pueden desactivar.
+            </p>
+          </div>
+          
+          <div class="cookies-category">
+            <div class="cookies-category__header">
+              <h4 class="cookies-category__title">Cookies de Análisis</h4>
+              <label class="cookies-toggle">
+                <input type="checkbox" id="cookiesAnalytics">
+                <span class="cookies-toggle__slider"></span>
+              </label>
+            </div>
+            <p class="cookies-category__description">
+              Nos ayudan a entender cómo los visitantes interactúan con el sitio web recopilando información de forma anónima.
+            </p>
+          </div>
+          
+          <div class="cookies-category">
+            <div class="cookies-category__header">
+              <h4 class="cookies-category__title">Cookies de Marketing</h4>
+              <label class="cookies-toggle">
+                <input type="checkbox" id="cookiesMarketing">
+                <span class="cookies-toggle__slider"></span>
+              </label>
+            </div>
+            <p class="cookies-category__description">
+              Se utilizan para hacer que los mensajes publicitarios sean más relevantes para ti.
+            </p>
+          </div>
+        </div>
+        
+        <div class="cookies-modal__footer">
+          <button class="cookies-modal__btn cookies-modal__btn--reject" id="cookiesRejectAll">
+            Rechazar Todas
+          </button>
+          <button class="cookies-modal__btn cookies-modal__btn--save" id="cookiesSaveSettings">
+            Guardar Preferencias
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -778,6 +964,12 @@
           const formData = new FormData(contactForm);
           const data = Object.fromEntries(formData);
           
+          // Determinar el presupuesto a mostrar
+          let presupuestoTexto = data.presupuesto || 'No especificado';
+          if(data.presupuesto === 'otro' && data.presupuestoOtro){
+            presupuestoTexto = data.presupuestoOtro;
+          }
+
           const message = `¡Hola! Me interesa conocer más sobre sus servicios.
 
 *Información del cliente:*
@@ -788,7 +980,7 @@
 
 *Detalles del proyecto:*
 • Servicio de interés: ${data.servicio || 'No especificado'}
-• Presupuesto: ${data.presupuesto || 'No especificado'}
+• Presupuesto: ${presupuestoTexto}
 • Tiempo de entrega: ${data.tiempo || 'No especificado'}
 
 *Descripción del proyecto:*
@@ -802,6 +994,25 @@ ${data.proyecto || 'No proporcionada'}
         
         // Hacer la función disponible globalmente si quieres agregar un botón de WhatsApp
         window.sendToWhatsApp = sendToWhatsApp;
+      }
+    })();
+
+    // Manejo del campo de presupuesto personalizado
+    (function(){
+      const presupuestoSelect = document.getElementById('presupuesto');
+      const presupuestoOtroGroup = document.getElementById('presupuestoOtroGroup');
+      const presupuestoOtroInput = document.getElementById('presupuestoOtro');
+      
+      if(presupuestoSelect && presupuestoOtroGroup && presupuestoOtroInput){
+        presupuestoSelect.addEventListener('change', function(){
+          if(this.value === 'otro'){
+            presupuestoOtroGroup.style.display = 'block';
+            presupuestoOtroInput.focus();
+          } else {
+            presupuestoOtroGroup.style.display = 'none';
+            presupuestoOtroInput.value = '';
+          }
+        });
       }
     })();
 
@@ -853,6 +1064,191 @@ ${data.proyecto || 'No proporcionada'}
           }
         });
       }
+    })();
+
+    // Sistema de Cookies
+    (function(){
+      // Elementos del DOM
+      const cookiesBanner = document.getElementById('cookiesBanner');
+      const cookiesModal = document.getElementById('cookiesModal');
+      const cookiesAccept = document.getElementById('cookiesAccept');
+      const cookiesSettings = document.getElementById('cookiesSettings');
+      const cookiesModalClose = document.getElementById('cookiesModalClose');
+      const cookiesRejectAll = document.getElementById('cookiesRejectAll');
+      const cookiesSaveSettings = document.getElementById('cookiesSaveSettings');
+      
+      // Checkboxes de categorías
+      const cookiesNecessary = document.getElementById('cookiesNecessary');
+      const cookiesAnalytics = document.getElementById('cookiesAnalytics');
+      const cookiesMarketing = document.getElementById('cookiesMarketing');
+      
+      // Verificar si ya se han aceptado las cookies
+      function checkCookiesConsent(){
+        const consent = localStorage.getItem('cookiesConsent');
+        if(consent){
+          cookiesBanner.style.display = 'none';
+          // Aplicar configuraciones guardadas
+          applyCookieSettings(JSON.parse(consent));
+        } else {
+          cookiesBanner.style.display = 'block';
+        }
+      }
+      
+      // Aplicar configuraciones de cookies
+      function applyCookieSettings(settings){
+        // Cookies necesarias (siempre activas)
+        if(settings.necessary){
+          // Activar funcionalidades básicas
+          console.log('Cookies necesarias activadas');
+        }
+        
+        // Cookies de análisis
+        if(settings.analytics){
+          // Activar Google Analytics u otras herramientas de análisis
+          console.log('Cookies de análisis activadas');
+          // Aquí puedes agregar el código de Google Analytics
+        } else {
+          console.log('Cookies de análisis desactivadas');
+        }
+        
+        // Cookies de marketing
+        if(settings.marketing){
+          // Activar herramientas de marketing
+          console.log('Cookies de marketing activadas');
+        } else {
+          console.log('Cookies de marketing desactivadas');
+        }
+      }
+      
+      // Guardar preferencias de cookies
+      function saveCookiePreferences(){
+        const settings = {
+          necessary: true, // Siempre true
+          analytics: cookiesAnalytics.checked,
+          marketing: cookiesMarketing.checked,
+          timestamp: new Date().toISOString()
+        };
+        
+        localStorage.setItem('cookiesConsent', JSON.stringify(settings));
+        applyCookieSettings(settings);
+        
+        // Ocultar banner y modal
+        cookiesBanner.style.display = 'none';
+        cookiesModal.style.display = 'none';
+        
+        // Mostrar mensaje de confirmación
+        showNotification('Preferencias de cookies guardadas', 'success');
+      }
+      
+      // Aceptar todas las cookies
+      function acceptAllCookies(){
+        const settings = {
+          necessary: true,
+          analytics: true,
+          marketing: true,
+          timestamp: new Date().toISOString()
+        };
+        
+        localStorage.setItem('cookiesConsent', JSON.stringify(settings));
+        applyCookieSettings(settings);
+        
+        cookiesBanner.style.display = 'none';
+        showNotification('Todas las cookies han sido aceptadas', 'success');
+      }
+      
+      // Rechazar todas las cookies (excepto necesarias)
+      function rejectAllCookies(){
+        const settings = {
+          necessary: true,
+          analytics: false,
+          marketing: false,
+          timestamp: new Date().toISOString()
+        };
+        
+        localStorage.setItem('cookiesConsent', JSON.stringify(settings));
+        applyCookieSettings(settings);
+        
+        cookiesBanner.style.display = 'none';
+        cookiesModal.style.display = 'none';
+        showNotification('Solo cookies necesarias han sido aceptadas', 'info');
+      }
+      
+      // Mostrar notificación
+      function showNotification(message, type = 'info'){
+        const notification = document.createElement('div');
+        notification.className = `cookies-notification cookies-notification--${type}`;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Mostrar notificación
+        setTimeout(() => {
+          notification.classList.add('cookies-notification--show');
+        }, 100);
+        
+        // Ocultar notificación después de 3 segundos
+        setTimeout(() => {
+          notification.classList.remove('cookies-notification--show');
+          setTimeout(() => {
+            document.body.removeChild(notification);
+          }, 300);
+        }, 3000);
+      }
+      
+      // Event listeners
+      if(cookiesAccept){
+        cookiesAccept.addEventListener('click', acceptAllCookies);
+      }
+      
+      if(cookiesSettings){
+        cookiesSettings.addEventListener('click', () => {
+          cookiesModal.style.display = 'flex';
+        });
+      }
+      
+      if(cookiesModalClose){
+        cookiesModalClose.addEventListener('click', () => {
+          cookiesModal.style.display = 'none';
+        });
+      }
+      
+      if(cookiesRejectAll){
+        cookiesRejectAll.addEventListener('click', rejectAllCookies);
+      }
+      
+      if(cookiesSaveSettings){
+        cookiesSaveSettings.addEventListener('click', saveCookiePreferences);
+      }
+      
+      // Cerrar modal al hacer clic fuera
+      if(cookiesModal){
+        cookiesModal.addEventListener('click', (e) => {
+          if(e.target === cookiesModal){
+            cookiesModal.style.display = 'none';
+          }
+        });
+      }
+      
+      // Cargar preferencias existentes en el modal
+      function loadExistingPreferences(){
+        const consent = localStorage.getItem('cookiesConsent');
+        if(consent){
+          const settings = JSON.parse(consent);
+          cookiesAnalytics.checked = settings.analytics || false;
+          cookiesMarketing.checked = settings.marketing || false;
+        }
+      }
+      
+      // Inicializar
+      checkCookiesConsent();
+      loadExistingPreferences();
+      
+      // Hacer funciones disponibles globalmente
+      window.acceptAllCookies = acceptAllCookies;
+      window.rejectAllCookies = rejectAllCookies;
+      window.showCookieSettings = () => {
+        cookiesModal.style.display = 'flex';
+      };
     })();
   </script>
 </body>
