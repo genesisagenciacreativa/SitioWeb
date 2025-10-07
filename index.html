@@ -547,6 +547,7 @@
       <img src="img/whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
     </a>
 
+
     <!-- Toggle para animación de círculos -->
     <button class="bubbles-toggle" id="bubblesToggle" aria-label="Activar/desactivar animación de círculos">
       <img src="img/on.png" alt="Animación activada" class="bubbles-icon bubbles-icon--on">
@@ -576,91 +577,7 @@
       </div>
     </div>
 
-    <!-- Banner de Cookies -->
-    <div class="cookies-banner" id="cookiesBanner">
-      <div class="cookies-banner__content">
-        <div class="cookies-banner__text">
-          <h4 class="cookies-banner__title">🍪 Uso de Cookies</h4>
-          <p class="cookies-banner__description">
-            Utilizamos cookies para mejorar tu experiencia, analizar el tráfico y personalizar el contenido. 
-            Al continuar navegando, aceptas nuestro uso de cookies.
-          </p>
-        </div>
-        <div class="cookies-banner__actions">
-          <button class="cookies-banner__btn cookies-banner__btn--settings" id="cookiesSettings">
-            Configurar
-          </button>
-          <button class="cookies-banner__btn cookies-banner__btn--accept" id="cookiesAccept">
-            Aceptar Todas
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal de Configuración de Cookies -->
-    <div class="cookies-modal" id="cookiesModal">
-      <div class="cookies-modal__content">
-        <div class="cookies-modal__header">
-          <h3 class="cookies-modal__title">Configuración de Cookies</h3>
-          <button class="cookies-modal__close" id="cookiesModalClose">×</button>
-        </div>
-        
-        <div class="cookies-modal__body">
-          <p class="cookies-modal__description">
-            Puedes personalizar tus preferencias de cookies. Algunas cookies son necesarias para el funcionamiento del sitio web.
-          </p>
-          
-          <div class="cookies-category">
-            <div class="cookies-category__header">
-              <h4 class="cookies-category__title">Cookies Necesarias</h4>
-              <label class="cookies-toggle">
-                <input type="checkbox" id="cookiesNecessary" checked disabled>
-                <span class="cookies-toggle__slider"></span>
-              </label>
-            </div>
-            <p class="cookies-category__description">
-              Estas cookies son esenciales para el funcionamiento del sitio web y no se pueden desactivar.
-            </p>
-          </div>
-          
-          <div class="cookies-category">
-            <div class="cookies-category__header">
-              <h4 class="cookies-category__title">Cookies de Análisis</h4>
-              <label class="cookies-toggle">
-                <input type="checkbox" id="cookiesAnalytics">
-                <span class="cookies-toggle__slider"></span>
-              </label>
-            </div>
-            <p class="cookies-category__description">
-              Nos ayudan a entender cómo los visitantes interactúan con el sitio web recopilando información de forma anónima.
-            </p>
-          </div>
-          
-          <div class="cookies-category">
-            <div class="cookies-category__header">
-              <h4 class="cookies-category__title">Cookies de Marketing</h4>
-              <label class="cookies-toggle">
-                <input type="checkbox" id="cookiesMarketing">
-                <span class="cookies-toggle__slider"></span>
-              </label>
-            </div>
-            <p class="cookies-category__description">
-              Se utilizan para hacer que los mensajes publicitarios sean más relevantes para ti.
-            </p>
-          </div>
-        </div>
-        
-        <div class="cookies-modal__footer">
-          <button class="cookies-modal__btn cookies-modal__btn--reject" id="cookiesRejectAll">
-            Rechazar Todas
-          </button>
-          <button class="cookies-modal__btn cookies-modal__btn--save" id="cookiesSaveSettings">
-            Guardar Preferencias
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+    
 
   <script>
     // Año dinámico en el footer
@@ -1250,6 +1167,7 @@ ${data.proyecto || 'No proporcionada'}
         cookiesModal.style.display = 'flex';
       };
     })();
+
   </script>
 </body>
 </html>
